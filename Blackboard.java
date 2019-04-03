@@ -18,16 +18,11 @@ public class Blackboard {
 	}
 	
 	public boolean workDone(Worker w) {
-		if (chairs.size() != chairsCount)
+		for (ChairInProgress c : chairs) {
+			if (w.check(c))
+				continue;
+
 			return false;
-		
-		else {
-			for (ChairInProgress c : chairs) {
-				if (w.check(c))
-					continue;
-				
-				return false;
-			}
 		}
 		
 		return true;
